@@ -1,0 +1,52 @@
+Syntecxhub Backend Development Internship - Task 4, Project 1
+Name: Fazil Hakim
+
+Project: Role-Based User Management API
+Folder: Syntecxhub_Role_Based_User_Management_API
+
+Description:
+A Node.js, Express, and MongoDB API where each user has a role (admin or user).
+JWT login includes the role. Middleware reads that role and blocks non-admins
+from management routes. An admin can list users, block or unblock them, and
+promote or demote them. Each of those actions is stored in an audit log.
+
+Technologies:
+- Node.js
+- Express
+- MongoDB with Mongoose
+- JWT
+- bcrypt
+
+Features:
+- Signup and login
+- User model extended with role and isBlocked
+- JWT payload includes the user role
+- Middleware that checks the role from the JWT
+- Admin-only routes to list, block, unblock, promote, and demote users
+- Blocked users cannot log in, and old tokens are rejected
+- Audit log of admin actions, with filters for user, target, action, and date
+
+Endpoints:
+- POST   /api/auth/signup
+- POST   /api/auth/login
+- GET    /api/auth/me
+- GET    /api/admin/users
+- GET    /api/admin/users/:id
+- PATCH  /api/admin/users/:id/block
+- PATCH  /api/admin/users/:id/unblock
+- PATCH  /api/admin/users/:id/promote
+- PATCH  /api/admin/users/:id/demote
+- GET    /api/admin/audit-logs
+
+Seed accounts:
+- Admin: admin@syntecxhub.com / Admin@123
+- User: fazil@syntecxhub.com / User@123
+
+How to run:
+1. npm install
+2. Add PORT, MONGO_URI, JWT_SECRET, and JWT_EXPIRES_IN to a .env file
+3. npm run seed
+4. npm start
+
+Testing:
+All endpoints were tested using Postman.
